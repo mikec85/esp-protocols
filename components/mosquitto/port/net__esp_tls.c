@@ -36,6 +36,7 @@ Contributors:
 #include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
+#include "esp_log.h"
 
 #ifdef HAVE_NETINET_IN_H
 #  include <netinet/in.h>
