@@ -31,12 +31,14 @@ Contributors:
 #  include <sys/socket.h>
 #  include <unistd.h>
 
+#include "esphome.h"            // 1. MUST BE FIRST: Automatically maps ESP_LOGI to the remote API
+#include "esphome/core/log.h" 
 #include <assert.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <string.h>
-#include "esp_log.h"
+
 
 #ifdef HAVE_NETINET_IN_H
 #  include <netinet/in.h>
