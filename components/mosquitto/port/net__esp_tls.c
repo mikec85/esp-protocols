@@ -31,7 +31,7 @@ Contributors:
 #  include <sys/socket.h>
 #  include <unistd.h>
 
-#include "esphome.h"            // 1. MUST BE FIRST: Automatically maps ESP_LOGI to the remote API
+#include "esphome/core/component.h"
 #include "esphome/core/log.h" 
 #include <assert.h>
 #include <errno.h>
