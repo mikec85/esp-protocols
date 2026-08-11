@@ -31,8 +31,6 @@ Contributors:
 #  include <sys/socket.h>
 #  include <unistd.h>
 
-#include "esphome/core/component.h"
-#include "esphome/core/log.h" 
 #include <assert.h>
 #include <errno.h>
 #include <fcntl.h>
@@ -177,12 +175,6 @@ struct mosquitto *net__socket_accept(struct mosquitto__listener_sock *listensock
 
     if (db.config->connection_messages == true) {
         log__printf(NULL, MOSQ_LOG_NOTICE, "New test connection from %s:%d on port %d.",
-                    new_context->address, new_context->remote_port, new_context->listener->port);
-        ESP_LOGD("mosquitto", "New connection from %s:%d on port %d.",
-                    new_context->address, new_context->remote_port, new_context->listener->port);
-        ESP_LOGI("mosquitto", "New connection from %s:%d on port %d.",
-                    new_context->address, new_context->remote_port, new_context->listener->port);
-        ESP_LOGW("mosquitto", "New connection from %s:%d on port %d.",
                     new_context->address, new_context->remote_port, new_context->listener->port);
     }
 
