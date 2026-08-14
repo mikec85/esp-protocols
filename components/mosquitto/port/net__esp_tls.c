@@ -228,8 +228,8 @@ static int net__socket_listen_tcp(struct mosquitto__listener *listener)
     for (rp = ainfo; rp; rp = rp->ai_next) {
         if (rp->ai_family == AF_INET) {
             log__printf(NULL, MOSQ_LOG_INFO, "Opening ipv4 listen socket on port %d.", ntohs(((struct sockaddr_in *)rp->ai_addr)->sin_port));
-        } else if (rp->ai_family == AF_INET6) {
-            log__printf(NULL, MOSQ_LOG_INFO, "Opening ipv6 listen socket on port %d.", ntohs(((struct sockaddr_in6 *)rp->ai_addr)->sin6_port));
+        //} else if (rp->ai_family == AF_INET6) {
+            //log__printf(NULL, MOSQ_LOG_INFO, "Opening ipv6 listen socket on port %d.", ntohs(((struct sockaddr_in6 *)rp->ai_addr)->sin6_port));
         } else {
             continue;
         }
@@ -256,7 +256,7 @@ static int net__socket_listen_tcp(struct mosquitto__listener *listener)
 #endif
 #ifdef IPV6_V6ONLY
         ss_opt = 1;
-        (void)setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, &ss_opt, sizeof(ss_opt));
+        //(void)setsockopt(sock, IPPROTO_IPV6, IPV6_V6ONLY, &ss_opt, sizeof(ss_opt));
 #endif
 
         if (net__socket_nonblock(&sock)) {
@@ -337,12 +337,12 @@ int net__socket_get_address(mosq_sock_t sock, char *buf, size_t len, uint16_t *r
                 return 0;
             }
         } else if (addr.ss_family == AF_INET6) {
-            if (remote_port) {
-                *remote_port = ntohs(((struct sockaddr_in6 *)&addr)->sin6_port);
-            }
-            if (inet_ntop(AF_INET6, &((struct sockaddr_in6 *)&addr)->sin6_addr.s6_addr, buf, (socklen_t)len)) {
-                return 0;
-            }
+            //if (remote_port) {
+            //    *remote_port = ntohs(((struct sockaddr_in6 *)&addr)->sin6_port);
+            //}
+            //if (inet_ntop(AF_INET6, &((struct sockaddr_in6 *)&addr)->sin6_addr.s6_addr, buf, (socklen_t)len)) {
+            //    return 0;
+            //}
         }
     }
     return 1;
